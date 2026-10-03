@@ -9,7 +9,6 @@
 ![google-genai](https://img.shields.io/badge/google--genai-30363D?style=flat-square)
 ![keyboard](https://img.shields.io/badge/keyboard-30363D?style=flat-square)
 ![Status](https://img.shields.io/badge/status-prototype-BF8700?style=flat-square)
-![Year](https://img.shields.io/badge/year-2026-8250DF?style=flat-square)
 
 </div>
 
@@ -67,10 +66,6 @@ Before the first launch, copy `.env.example` to `.env` and fill in `GEMINI_API_K
 - The first-run dialog saves the key, but the app does not carry on afterwards: `setQuitOnLastWindowClosed(False)` is set before the dialog's event loop starts, so closing the dialog never returns from it. The dialog also writes `.env` to the current working directory, while the app looks for it next to `main.py`.
 - The model id is hard-coded in `src/ai_client.py`. Preview models are retired over time, so it may need updating.
 - The `keyboard` package needs administrator rights for global hooks on Linux.
-
-## Background
-
-Written in February 2026; all files date from 24 February 2026.
 
 ---
 
