@@ -1,6 +1,5 @@
-PyQt6
-keyboard
-Pillow
-google-genai
-python-dotenv
-Markdown
+PyQt6>=6.6.0
+keyboard>=0.13.5
+pillow>=10.2.0
+google-genai>=0.3.0
+python-dotenv>=1.0.1
