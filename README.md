@@ -23,11 +23,11 @@ A small PyQt6 app that waits in the background for <kbd>Ctrl</kbd> + <kbd>Shift<
 ## Quick start
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -r requirements.txt markdown
 python main.py
 ```
 
-Before the first launch, copy `.env.example` to `.env` and fill in `GEMINI_API_KEY`; otherwise the setup dialog saves the key and the app then has to be started again from the repository folder.
+Before the first launch, copy `.env.example` to `.env` and fill in `GEMINI_API_KEY`; otherwise the setup dialog saves the key but the process then hangs, and the app has to be started again from the repository folder after ending that process. `markdown` is installed separately because `requirements.txt` does not list it.
 
 ## Controls
 
@@ -36,7 +36,7 @@ Before the first launch, copy `.env.example` to `.env` and fill in `GEMINI_API_K
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> | Open the capture overlay, from any application |
 | Left-drag on the overlay | Select the region to explain (larger than 10 × 10 px) |
 | Right-click or <kbd>Esc</kbd> on the overlay | Cancel the capture |
-| Drag the answer window | Move it |
+| Drag the answer window by its title bar or border | Move it |
 | <kbd>Esc</kbd> or the ✕ button | Hide the answer window |
 
 ## How it works
@@ -61,6 +61,7 @@ Before the first launch, copy `.env.example` to `.env` and fill in `GEMINI_API_K
 
 ## Limitations
 
+- `requirements.txt` does not list `markdown`, which `src/response_window.py` imports, so `pip install -r requirements.txt` alone is not enough.
 - Only the primary screen is captured, although the overlay spans every monitor, so selections on other monitors are not captured correctly.
 - The prompt is fixed: there is no way to type your own question or ask a follow-up, and each new capture replaces the previous answer.
 - The first-run dialog saves the key, but the app does not carry on afterwards: `setQuitOnLastWindowClosed(False)` is set before the dialog's event loop starts, so closing the dialog never returns from it. The dialog also writes `.env` to the current working directory, while the app looks for it next to `main.py`.
